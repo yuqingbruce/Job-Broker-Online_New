@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Account Name" />
+          </Key>
+          <Property Name="Account Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Company Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Person to Contact" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Contact Number" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="Contact Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Conpany Address" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="JobBroker">
+          <Key>
+            <PropertyRef Name="Account Name" />
+          </Key>
+          <Property Name="Account Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="150" />
+          <Property Name="Contact Number" Type="varchar" MaxLength="75" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="JobInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Job Position" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Company Name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Work Address" Type="varchar" MaxLength="255" />
+          <Property Name="Job Description" Type="text" />
+          <Property Name="Job Requirement" Type="text" />
+          <Property Name="Person to Contact" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Contact Number" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="Contact Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Other Notes" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="Student Id" />
+          </Key>
+          <Property Name="Student Id" Type="int" Nullable="false" />
+          <Property Name="Full Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Is Maori or Pacific" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="6" />
+          <Property Name="Date of Birth" Type="date" />
+          <Property Name="Contact Number" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Physical Address" Type="varchar" MaxLength="255" />
+          <Property Name="Postal Address" Type="varchar" MaxLength="255" />
+          <Property Name="Institute" Type="varchar" MaxLength="45" />
+          <Property Name="Qualification Title" Type="varchar" MaxLength="255" />
+          <Property Name="Qualification Completion Date" Type="date" />
+          <Property Name="Enrollment Status" Type="varchar" MaxLength="45" />
+          <Property Name="Job Expection" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Student Id" />
+          </Key>
+          <Property Name="Student Id" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Full Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Is Maori or Pacific" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="6" />
+          <Property Name="Date of Birth" Type="date" />
+          <Property Name="Contact Number" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StudentCase">
+          <Key>
+            <PropertyRef Name="Student Id" />
+          </Key>
+          <Property Name="Student Id" Type="int" Nullable="false" />
+          <Property Name="Full Name" Type="varchar" MaxLength="150" />
+          <Property Name="Contact Number" Type="varchar" MaxLength="75" />
+          <Property Name="Student Email Link" Type="varchar" MaxLength="255" />
+          <Property Name="Qualification Title" Type="varchar" MaxLength="255" />
+          <Property Name="Recommanded Job" Type="varchar" MaxLength="255" />
+          <Property Name="Progress" Type="varchar" MaxLength="255" />
+          <Property Name="Profile Link" Type="varchar" MaxLength="75" />
+          <Property Name="Explanatory Comment" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_JobInformation_ToEmployee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="JobInformation" Type="Self.JobInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Account Name" />
+            </Principal>
+            <Dependent Role="JobInformation">
+              <PropertyRef Name="Person to Contact" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profile_ToStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student Id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="Student Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCase_ToStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentCase" Type="Self.StudentCase" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student Id" />
+            </Principal>
+            <Dependent Role="StudentCase">
+              <PropertyRef Name="Student Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobBroker" EntityType="Self.JobBroker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="JobInformation" EntityType="Self.JobInformation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentCase" EntityType="Self.StudentCase" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_JobInformation_ToEmployee" Association="Self.FK_JobInformation_ToEmployee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="JobInformation" EntitySet="JobInformation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profile_ToStudent" Association="Self.FK_Profile_ToStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCase_ToStudent" Association="Self.FK_StudentCase_ToStudent">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="StudentCase" EntitySet="StudentCase" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Account_Name" />
+          </Key>
+          <Property Name="Account_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Person_to_Contact" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact_Number" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Conpany_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="JobInformations" Relationship="Self.FK_JobInformation_ToEmployee" FromRole="Employee" ToRole="JobInformation" />
+        </EntityType>
+        <EntityType Name="JobBroker">
+          <Key>
+            <PropertyRef Name="Account_Name" />
+          </Key>
+          <Property Name="Account_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_Number" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="JobInformation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Job_Position" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Company_Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Work_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Job_Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Job_Requirement" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Person_to_Contact" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact_Number" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact_Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Other_Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK_JobInformation_ToEmployee" FromRole="JobInformation" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="Int32" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Is_Maori_or_Pacific" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Date_of_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Contact_Number" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Physical_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Postal_Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Institute" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Qualification_Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Qualification_Completion_Date" Type="DateTime" Precision="0" />
+          <Property Name="Enrollment_Status" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Job_Expection" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_Profile_ToStudent" FromRole="Profile" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Is_Maori_or_Pacific" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Date_of_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Contact_Number" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Profile" Relationship="Self.FK_Profile_ToStudent" FromRole="Student" ToRole="Profile" />
+          <NavigationProperty Name="StudentCase" Relationship="Self.FK_StudentCase_ToStudent" FromRole="Student" ToRole="StudentCase" />
+        </EntityType>
+        <EntityType Name="StudentCase">
+          <Key>
+            <PropertyRef Name="Student_Id" />
+          </Key>
+          <Property Name="Student_Id" Type="Int32" Nullable="false" />
+          <Property Name="Full_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Contact_Number" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="Student_Email_Link" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Qualification_Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Recommanded_Job" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Progress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Profile_Link" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="Explanatory_Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Student" Relationship="Self.FK_StudentCase_ToStudent" FromRole="StudentCase" ToRole="Student" />
+        </EntityType>
+        <Association Name="FK_JobInformation_ToEmployee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="JobInformation" Type="Self.JobInformation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Account_Name" />
+            </Principal>
+            <Dependent Role="JobInformation">
+              <PropertyRef Name="Person_to_Contact" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Profile_ToStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_Id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentCase_ToStudent">
+          <End Role="Student" Type="Self.Student" Multiplicity="1" />
+          <End Role="StudentCase" Type="Self.StudentCase" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="Student_Id" />
+            </Principal>
+            <Dependent Role="StudentCase">
+              <PropertyRef Name="Student_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="JobBrokers" EntityType="Self.JobBroker" />
+          <EntitySet Name="JobInformations" EntityType="Self.JobInformation" />
+          <EntitySet Name="Profiles" EntityType="Self.Profile" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="StudentCases" EntityType="Self.StudentCase" />
+          <AssociationSet Name="FK_JobInformation_ToEmployee" Association="Self.FK_JobInformation_ToEmployee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="JobInformation" EntitySet="JobInformations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profile_ToStudent" Association="Self.FK_Profile_ToStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentCase_ToStudent" Association="Self.FK_StudentCase_ToStudent">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="StudentCase" EntitySet="StudentCases" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="Database1Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Account_Name" ColumnName="Account Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company Name" />
+                <ScalarProperty Name="Person_to_Contact" ColumnName="Person to Contact" />
+                <ScalarProperty Name="Contact_Number" ColumnName="Contact Number" />
+                <ScalarProperty Name="Contact_Email" ColumnName="Contact Email" />
+                <ScalarProperty Name="Conpany_Address" ColumnName="Conpany Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobBrokers">
+            <EntityTypeMapping TypeName="Database1Model.JobBroker">
+              <MappingFragment StoreEntitySet="JobBroker">
+                <ScalarProperty Name="Account_Name" ColumnName="Account Name" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Contact_Number" ColumnName="Contact Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JobInformations">
+            <EntityTypeMapping TypeName="Database1Model.JobInformation">
+              <MappingFragment StoreEntitySet="JobInformation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Job_Position" ColumnName="Job Position" />
+                <ScalarProperty Name="Company_Name" ColumnName="Company Name" />
+                <ScalarProperty Name="Work_Address" ColumnName="Work Address" />
+                <ScalarProperty Name="Job_Description" ColumnName="Job Description" />
+                <ScalarProperty Name="Job_Requirement" ColumnName="Job Requirement" />
+                <ScalarProperty Name="Person_to_Contact" ColumnName="Person to Contact" />
+                <ScalarProperty Name="Contact_Number" ColumnName="Contact Number" />
+                <ScalarProperty Name="Contact_Email" ColumnName="Contact Email" />
+                <ScalarProperty Name="Other_Notes" ColumnName="Other Notes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="Database1Model.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="Student_Id" ColumnName="Student Id" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
+                <ScalarProperty Name="Is_Maori_or_Pacific" ColumnName="Is Maori or Pacific" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date of Birth" />
+                <ScalarProperty Name="Contact_Number" ColumnName="Contact Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Physical_Address" ColumnName="Physical Address" />
+                <ScalarProperty Name="Postal_Address" ColumnName="Postal Address" />
+                <ScalarProperty Name="Institute" ColumnName="Institute" />
+                <ScalarProperty Name="Qualification_Title" ColumnName="Qualification Title" />
+                <ScalarProperty Name="Qualification_Completion_Date" ColumnName="Qualification Completion Date" />
+                <ScalarProperty Name="Enrollment_Status" ColumnName="Enrollment Status" />
+                <ScalarProperty Name="Job_Expection" ColumnName="Job Expection" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="Database1Model.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="Student_Id" ColumnName="Student Id" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
+                <ScalarProperty Name="Is_Maori_or_Pacific" ColumnName="Is Maori or Pacific" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date of Birth" />
+                <ScalarProperty Name="Contact_Number" ColumnName="Contact Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentCases">
+            <EntityTypeMapping TypeName="Database1Model.StudentCase">
+              <MappingFragment StoreEntitySet="StudentCase">
+                <ScalarProperty Name="Student_Id" ColumnName="Student Id" />
+                <ScalarProperty Name="Full_Name" ColumnName="Full Name" />
+                <ScalarProperty Name="Contact_Number" ColumnName="Contact Number" />
+                <ScalarProperty Name="Student_Email_Link" ColumnName="Student Email Link" />
+                <ScalarProperty Name="Qualification_Title" ColumnName="Qualification Title" />
+                <ScalarProperty Name="Recommanded_Job" ColumnName="Recommanded Job" />
+                <ScalarProperty Name="Progress" ColumnName="Progress" />
+                <ScalarProperty Name="Profile_Link" ColumnName="Profile Link" />
+                <ScalarProperty Name="Explanatory_Comment" ColumnName="Explanatory Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

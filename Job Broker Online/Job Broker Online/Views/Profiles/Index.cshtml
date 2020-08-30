@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Job_Broker_Online.Models.Profile>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Full_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Is_Maori_or_Pacific)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_of_Birth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contact_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Physical_Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Postal_Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Institute)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qualification_Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qualification_Completion_Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Enrollment_Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Job_Expection)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Student.Password)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Full_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Is_Maori_or_Pacific)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_of_Birth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contact_Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Physical_Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Postal_Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Institute)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qualification_Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Qualification_Completion_Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Enrollment_Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Job_Expection)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Student.Password)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Student_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Student_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Student_Id })
+        </td>
+    </tr>
+}
+
+</table>

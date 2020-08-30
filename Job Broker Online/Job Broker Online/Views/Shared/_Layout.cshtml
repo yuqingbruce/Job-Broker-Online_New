@@ -25,6 +25,15 @@
 
                 <a class="navbar-brand" href="/"><i class="fa fa-home w3-margin-right"></i>Home</a>
 
+                <div class="w3-dropdown-hover w3-hide-small">
+                    <button class="w3-button" title="Notifications"> Register <i class="fa fa-caret-down"></i></button>
+                    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+                        <a href="/JobBrokers/Create" class="w3-bar-item w3-button">Job Broker</a>
+                        <a href="/Employees/Create" class="w3-bar-item w3-button">Employee</a>
+                        <a href="/Students/Create" class="w3-bar-item w3-button">Student</a>
+                    </div>
+                </div>
+
                 @Html.ActionLink("Register", "HomePage", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("Login", "HomePage", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 @Html.ActionLink("Temporary Links", "HomePage", "Home", new { area = "" }, new { @class = "navbar-brand" })

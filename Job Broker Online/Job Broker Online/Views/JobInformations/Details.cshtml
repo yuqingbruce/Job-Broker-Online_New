@@ -1,0 +1,90 @@
+﻿@model Job_Broker_Online.Models.JobInformation
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>JobInformation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Job_Position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Job_Position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Work_Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Work_Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Job_Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Job_Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Job_Requirement)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Job_Requirement)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Other_Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Other_Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee.Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

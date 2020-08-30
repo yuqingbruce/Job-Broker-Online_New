@@ -1,0 +1,90 @@
+﻿@model Job_Broker_Online.Models.Student
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Full_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Full_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Is_Maori_or_Pacific)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Is_Maori_or_Pacific)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_of_Birth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_of_Birth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profile.Full_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profile.Full_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentCase.Full_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StudentCase.Full_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Student_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

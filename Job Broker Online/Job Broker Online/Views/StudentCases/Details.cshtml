@@ -1,0 +1,90 @@
+﻿@model Job_Broker_Online.Models.StudentCase
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StudentCase</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Full_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Full_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Email_Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Email_Link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Qualification_Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Qualification_Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recommanded_Job)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recommanded_Job)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Progress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Progress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Profile_Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Profile_Link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Explanatory_Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Explanatory_Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student.Password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Student_Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
