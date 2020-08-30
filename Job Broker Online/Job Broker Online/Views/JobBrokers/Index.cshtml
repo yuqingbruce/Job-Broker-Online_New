@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Account_Name)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Password)
         </th>
         <th>
@@ -24,22 +27,25 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contact_Number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Account_Name }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Account_Name }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Account_Name })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Account_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Password)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Contact_Number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Account_Name }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Account_Name }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Account_Name })
+    </td>
+</tr>
 }
 
 </table>

@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Student_Id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Full_Name)
         </th>
         <th>
@@ -42,40 +45,43 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Full_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contact_Number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Student_Email_Link)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Qualification_Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Recommanded_Job)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Progress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Profile_Link)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Explanatory_Comment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Student.Password)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Student_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Student_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Student_Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Student_Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Full_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Contact_Number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Student_Email_Link)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Qualification_Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Recommanded_Job)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Progress)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Profile_Link)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Explanatory_Comment)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Student.Password)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Student_Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Student_Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Student_Id })
+    </td>
+</tr>
 }
 
 </table>

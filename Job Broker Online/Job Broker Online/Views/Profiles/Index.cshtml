@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.Student_Id)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Full_Name)
         </th>
         <th>
@@ -57,55 +60,58 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Full_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Is_Maori_or_Pacific)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gender)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date_of_Birth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contact_Number)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Physical_Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Postal_Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Institute)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Qualification_Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Qualification_Completion_Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Enrollment_Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Job_Expection)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Student.Password)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Student_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Student_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Student_Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Student_Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Full_Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Is_Maori_or_Pacific)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Gender)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Date_of_Birth)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Contact_Number)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Physical_Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Postal_Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Institute)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Qualification_Title)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Qualification_Completion_Date)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Enrollment_Status)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Job_Expection)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Student.Password)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Student_Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Student_Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Student_Id })
+    </td>
+</tr>
 }
 
 </table>
